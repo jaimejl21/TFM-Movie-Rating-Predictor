@@ -52,7 +52,7 @@ plot = st.text_area("📝 Plot", "A light-hearted office romance.", height=100)
 actors_csv = st.text_input("🧑‍🎤 Actors (comma separated)", "Jack Lemmon, Will Smith, Walter Matthau")
 directors_csv = st.text_input("🎬 Directors (comma separated)", "Billy Wilder, Roger Michell")
 writers_csv = st.text_input("✍️ Writers (comma separated)", "Nora Ephron, Richard Curtis")
-top_k = st.number_input("🔢 Top K combinations", min_value=1, max_value=50, value=5)
+top_k = st.number_input("🔢 Top K combinations", min_value=1, max_value=50, value=12)
 
 actors = _split_csv(actors_csv)
 directors = _split_csv(directors_csv)
@@ -132,3 +132,4 @@ if st.button("🚀 Predict rating"):
 
             except Exception as e:
                 st.exception(e)
+
