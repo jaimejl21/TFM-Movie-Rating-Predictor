@@ -59,7 +59,7 @@ directors = _split_csv(directors_csv)
 writers = _split_csv(writers_csv)
 
 # -----------------------------
-# Helper para llamada robusta
+# Helper for robust call
 # -----------------------------
 def call_with_retry(url, headers, payload, max_retries=4, connect_timeout=15, read_timeout=300):
     backoff = 2
@@ -132,4 +132,5 @@ if st.button("🚀 Predict rating"):
 
             except Exception as e:
                 st.exception(e)
+
 
