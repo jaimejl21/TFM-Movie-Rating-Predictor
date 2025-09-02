@@ -111,7 +111,6 @@ plot = st.text_area(
     max_chars=100,
     help="Short logline or brief synopsis. 100 characters maximum.",
 )
-st.caption(f"Characters: {len(plot)}/100")
 
 actors_csv    = st.text_input("🧑‍🎤 Actors (comma separated)",    "Jack Lemmon, Will Smith, Walter Matthau")
 directors_csv = st.text_input("🎬 Directors (comma separated)",     "Billy Wilder, Roger Michell")
@@ -228,3 +227,4 @@ if st.button("🚀 Predict rating"):
 
         except Exception as e:
             st.exception(e)
+
