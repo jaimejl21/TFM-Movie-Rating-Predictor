@@ -193,7 +193,8 @@ if st.button("🚀 Predict rating"):
     payload = {"dataframe_records": [row]}
 
     # --- Call endpoint ---
-    with st.spinner(""🎬 Generating predictions… Please wait""):
+    with st.spinner("🎬 Generating predictions… Please wait"):
+        st.caption("Note: the first request can take a bit longer than usual.")
         try:
             resp = call_with_retry(SERVING_URL, HEADERS, payload)
             if resp.status_code != 200:
@@ -227,6 +228,7 @@ if st.button("🚀 Predict rating"):
 
         except Exception as e:
             st.exception(e)
+
 
 
 
