@@ -193,7 +193,7 @@ if st.button("🚀 Predict rating"):
     payload = {"dataframe_records": [row]}
 
     # --- Call endpoint ---
-    with st.spinner("Calling Databricks Model Serving… (first try may take longer due to cold start)"):
+    with st.spinner(""🎬 Generating predictions… Please wait""):
         try:
             resp = call_with_retry(SERVING_URL, HEADERS, payload)
             if resp.status_code != 200:
@@ -227,5 +227,6 @@ if st.button("🚀 Predict rating"):
 
         except Exception as e:
             st.exception(e)
+
 
 
