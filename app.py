@@ -105,7 +105,7 @@ genres = st.multiselect("🎭 Genres", COMMON_GENRES, default=["Comedy", "Romanc
 
 # NOTE: max_chars impone el límite duro de 100 chars
 plot = st.text_area(
-    "📝 Plot (100 char max)",
+    "📝 Plot",
     "A light-hearted office romance.",
     height=100,
     max_chars=100,
@@ -227,4 +227,5 @@ if st.button("🚀 Predict rating"):
 
         except Exception as e:
             st.exception(e)
+
 
