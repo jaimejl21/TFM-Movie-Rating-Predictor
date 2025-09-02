@@ -47,7 +47,7 @@ genres = st.multiselect(
     ],
     default=["Comedy", "Romance"]
 )
-plot = st.text_area("📝 Plot", "A light-hearted office romance.", height=100)
+plot = st.text_area("📝 Plot (100 char max)", "A light-hearted office romance.", height=100)
 
 actors_csv = st.text_input("🧑‍🎤 Actors (comma separated)", "Jack Lemmon, Will Smith, Walter Matthau")
 directors_csv = st.text_input("🎬 Directors (comma separated)", "Billy Wilder, Roger Michell")
@@ -132,5 +132,6 @@ if st.button("🚀 Predict rating"):
 
             except Exception as e:
                 st.exception(e)
+
 
 
