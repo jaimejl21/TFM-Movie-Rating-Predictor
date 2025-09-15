@@ -1,3 +1,11 @@
 streamlit>=1.33
 requests>=2.31
 pandas>=2.0
+
+# --- dev/test ---
+pytest>=8.0
+pyspark==3.5.1
+responses>=0.25
+numpy>=1.26
+# Opcional (solo si vas a testear Delta local real)
+# delta-spark==3.2.0
