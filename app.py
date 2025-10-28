@@ -55,7 +55,7 @@ def load_model(path: str):
     Load the model from disk using cloudpickle.
     It supports custom transformers defined in custom_transformers.py.
     """
-     with gzip.open(path, "rb") as f:
+    with gzip.open(path, "rb") as f:
         return cloudpickle.load(f)
 
 
@@ -108,5 +108,6 @@ st.markdown("---")
 st.caption(
     "Developed for TFM 🎓 | Model trained on Databricks and deployed with Streamlit 🌐"
 )
+
 
 
