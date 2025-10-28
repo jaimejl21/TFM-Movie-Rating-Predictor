@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 import requests
 import cloudpickle
+import gzip
 
 # ====================================================
 # 1️⃣ Import Custom Transformers
@@ -28,7 +29,7 @@ st.write("Predict the average IMDb rating of a movie based on its synopsis, genr
 # 3️⃣ Model Download & Load
 # ====================================================
 # Update this URL with your actual Hugging Face model file link
-MODEL_URL = "https://huggingface.co/jaimejl21/movie-rating-predictor/resolve/main/movie_rating_rf_sklearn.pkl"
+MODEL_URL = "https://huggingface.co/jaimejl21/movie-rating-predictor/resolve/main/movie_rating_rf_sklearn.pkl.gz"
 MODEL_PATH = "movie_rating_rf_sklearn.pkl"
 
 
@@ -54,7 +55,7 @@ def load_model(path: str):
     Load the model from disk using cloudpickle.
     It supports custom transformers defined in custom_transformers.py.
     """
-    with open(path, "rb") as f:
+     with gzip.open(path, "rb") as f:
         return cloudpickle.load(f)
 
 
@@ -107,4 +108,5 @@ st.markdown("---")
 st.caption(
     "Developed for TFM 🎓 | Model trained on Databricks and deployed with Streamlit 🌐"
 )
+
 
