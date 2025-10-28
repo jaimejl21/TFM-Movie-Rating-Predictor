@@ -20,27 +20,28 @@ given selected genres and a brief plot. Fill in the details below.
 """)
 
 # ====================================================
-# 2️⃣ Download model (once)
+# 2️⃣ Download & Load Model (cached)
 # ====================================================
-if not os.path.exists(CACHE_PATH):
-    with st.spinner("📦 Downloading model from Hugging Face…"):
-        response = requests.get(HF_MODEL_URL, stream=True)
+@st.cache_data(show_spinner=False)
+def download_model(url=HF_MODEL_URL, path=CACHE_PATH):
+    if not os.path.exists(path):
+        response = requests.get(url, stream=True)
         response.raise_for_status()
-        with open(CACHE_PATH, "wb") as f:
+        with open(path, "wb") as f:
             for chunk in response.iter_content(chunk_size=8192):
                 f.write(chunk)
+    return path
+
+@st.cache_data(show_spinner=True)
+def load_model(path):
+    with open(path, "rb") as f:
+        return cloudpickle.load(f)
+
+CACHE_PATH = download_model()
+model = load_model(CACHE_PATH)
 
 # ====================================================
-# 3️⃣ Load Model
-# ====================================================
-model = None
-if model is None:
-    with st.spinner("🔄 Loading model into memory…"):
-        with open(CACHE_PATH, "rb") as f:
-            model = cloudpickle.load(f)
-            
-# ====================================================
-# 4️⃣ Helper Functions (Validation)
+# 3️⃣ Helper Functions (Validation)
 # ====================================================
 def _split_csv(s: str):
     if not s:
@@ -75,7 +76,7 @@ def validate_name_list(items, label):
     return clean, errors
 
 # ====================================================
-# 5️⃣ User Inputs
+# 4️⃣ User Inputs
 # ====================================================
 COMMON_GENRES = [
     "Action","Adventure","Comedy","Drama","Romance","Sci-Fi","Thriller","Horror","Fantasy","Mystery",
@@ -93,7 +94,7 @@ top_k = st.number_input("🔢 Top K combinations", min_value=1, max_value=50, va
 actors, directors, writers = map(_split_csv, [actors_csv, directors_csv, writers_csv])
 
 # ====================================================
-# 6️⃣ Predict
+# 5️⃣ Predict
 # ====================================================
 if st.button("🚀 Predict rating"):
     errors = []
