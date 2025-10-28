@@ -28,7 +28,7 @@ st.write("Predict the average IMDb rating of a movie based on its synopsis, genr
 # 3️⃣ Model Download & Load
 # ====================================================
 # Update this URL with your actual Hugging Face model file link
-MODEL_URL = "https://huggingface.co/tu_usuario/tu_modelo/resolve/main/movie_rating_rf_sklearn.pkl"
+MODEL_URL = "https://huggingface.co/jaimejl21/movie-rating-predictor/resolve/main/movie_rating_rf_sklearn.pkl"
 MODEL_PATH = "movie_rating_rf_sklearn.pkl"
 
 
@@ -107,3 +107,4 @@ st.markdown("---")
 st.caption(
     "Developed for TFM 🎓 | Model trained on Databricks and deployed with Streamlit 🌐"
 )
+
