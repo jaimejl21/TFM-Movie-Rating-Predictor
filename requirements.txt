@@ -1,7 +1,9 @@
+streamlit==1.26.0
 pandas==2.1.1
-numpy==1.27.5
-scikit-learn==1.4.2
-requests==2.32.0
+numpy==1.27.4
+scikit-learn==1.7.2
+cloudpickle==2.2.1
+requests==2.31.0
 
 # --- dev/test ---
 pytest>=8.0
@@ -11,5 +13,6 @@ numpy>=1.26
 # Opcional (solo si vas a testear Delta local real)
 
 # delta-spark==3.2.0
+
 
 
